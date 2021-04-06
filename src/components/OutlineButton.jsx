@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import normalize from "react-native-normalize";
 
+import colors from "../styles/colors";
 
-const OutlineButton = ({title, style, isChecked, onPress, disabled, isSelected }) => {
+const OutlineButton = ({title, style, onPress, disabled, isSelected }) => {
     const [color, setColor] = useState({
         textColor: style.textColor,
         backgroundColor: 'transparent'
@@ -14,7 +13,7 @@ const OutlineButton = ({title, style, isChecked, onPress, disabled, isSelected }
 
     useEffect( () => {
         if(isSelected){
-            setColor({textColor: '#fff', backgroundColor: style.underlayColor});
+            setColor({textColor: colors.white, backgroundColor: style.underlayColor});
         }
         else{
             setColor({textColor: style.textColor, backgroundColor: 'transparent'});
@@ -22,7 +21,7 @@ const OutlineButton = ({title, style, isChecked, onPress, disabled, isSelected }
     }, [isSelected]);
 
     const _onPress = () => {
-        setColor({textColor: '#fff', backgroundColor: style.underlayColor});
+        setColor({textColor: colors.white, backgroundColor: style.underlayColor});
         onPress();
     }
 
@@ -30,34 +29,23 @@ const OutlineButton = ({title, style, isChecked, onPress, disabled, isSelected }
         <TouchableHighlight
             onPress={() => _onPress()}
             underlayColor={style.underlayColor}
-            onShowUnderlay={() => setColor({...color, textColor: '#fff'})}
-            onHideUnderlay={() => setColor({...color, textColor: isSelected?'#fff':style.textColor})}
+            onShowUnderlay={() => setColor({...color, textColor: colors.white})}
+            onHideUnderlay={() => setColor({...color, textColor: isSelected?colors.white:style.textColor})}
             style={
                 {
                     width: style.width ? style.width : null,
                     ...styles.button,
-                    borderColor: isChecked ? COLORS.green : style.borderColor,
+                    borderColor: style.borderColor,
                     backgroundColor: color.backgroundColor,
                     opacity: disabled ? 0.7 : 1,
                 }
             }
-            disabled={isChecked || disabled}
+            disabled={disabled}
         >
             <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                {isChecked && (
-                    <FontAwesomeIcon size={ normalize(14) }
-                        icon={ faCheck }
-                        style={
-                            {
-                                ...styles.icon,
-                                color: isChecked?COLORS.green:color.textColor
-                            }
-                        }
-                    />
-                )}
                 <Text style={
                     {
-                        color: isChecked ? COLORS.green : color.textColor,
+                        color: color.textColor,
                         textAlign: 'center',
                         fontSize: style.fontSize ? normalize(style.fontSize) : normalize(15),
                         opacity: disabled ? 0.7 : 1
@@ -90,9 +78,9 @@ const styles = StyleSheet.create({
 OutlineButton.defaultProps = {
     title: 'Press Me',
     style: {
-        underlayColor: '#1176b4',
-        textColor: '#fff',
-        borderColor: '#1176b4',
+        underlayColor: colors.primary,
+        textColor: colors.white,
+        borderColor: colors.primary,
     },
     isChecked: false,
     isSelected: false,
