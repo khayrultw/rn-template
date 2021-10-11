@@ -11,11 +11,7 @@ import MaskTextInput from "./src/components/MaskTextInput";
 
 const App = () => {
   return (
-    <>
-      <MaskTextInput
-        initialMask={'__/__/____'}
-      />
-    </>
+    <></>
   );
 };
 

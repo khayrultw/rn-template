@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
-import normalize from "react-native-normalize";
+import {normalize} from '../utils';
 
 import colors from "../styles/colors";
 

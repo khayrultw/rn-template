@@ -1,9 +1,9 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
-import normalize from "react-native-normalize";
+import {normalize} from '../utils';
 import Icon from "react-native-vector-icons/FontAwesome5";
-import Text from "./Text";
+import TextView from "./TextView";
 import colors from "../styles/colors";
 
 function Button({title, style, icon, iconColor, iconSize, fontSize, disabled, backgroundColor, disabledColor, textColor, onPress }) {
@@ -15,27 +15,27 @@ function Button({title, style, icon, iconColor, iconSize, fontSize, disabled, ba
   }
 
   return (
-    <>
-      <TouchableOpacity
-        style={buttonStyle}
-        onPress={onPress}
-        disabled={disabled}
-      >
+    <TouchableOpacity
+      style={buttonStyle}
+      onPress={onPress}
+      disabled={disabled}
+    >
+      <View style={styles.row}>
         {!!icon && (
           <Icon
             name={icon}
-            size={iconSize}
+            size={normalize(iconSize)}
             color={iconColor}
             style={styles.icon}
           />
         )}
-        <Text
+        <TextView
           color={ textColor }
           text={title}
           fontSize={fontSize}
         />
-      </TouchableOpacity>
-    </>
+      </View>
+    </TouchableOpacity>
   )
 }
 
@@ -48,7 +48,7 @@ Button.defaultProps = {
   disabled: false,
   backgroundColor: colors.primary,
   disabledColor: colors.primary,
-  textColor: colors.black,
+  textColor: colors.white,
   style: {}
 };
 
@@ -68,9 +68,9 @@ Button.propTypes = {
 
 const styles = StyleSheet.create({
   button: {
+    alignItems: 'center',
     alignSelf: 'center',
     borderRadius: 4,
-    flexDirection: 'row',
     justifyContent: 'center',
     marginVertical: 5,
     paddingHorizontal: normalize(10),
@@ -79,6 +79,9 @@ const styles = StyleSheet.create({
   icon: {
     alignSelf: 'center',
     marginRight: normalize(5)
+  },
+  row: {
+    flexDirection: 'row',
   }
 })
 
