@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
+import { TouchableHighlight, StyleSheet, View } from 'react-native';
 import {normalize} from '../utils';
 
 import colors from "../styles/colors";
+import TextView from "./TextView";
 
 const OutlineButton = ({title, style, onPress, disabled, isSelected }) => {
     const [color, setColor] = useState({
@@ -25,34 +26,31 @@ const OutlineButton = ({title, style, onPress, disabled, isSelected }) => {
         onPress();
     }
 
+    const buttonStyle = {
+        width: style.width ? style.width : null,
+        ...styles.button,
+        borderColor: style.borderColor,
+        backgroundColor: color.backgroundColor,
+        opacity: disabled ? 0.7 : 1,
+    }
+
     return (
         <TouchableHighlight
             onPress={() => _onPress()}
             underlayColor={style.underlayColor}
             onShowUnderlay={() => setColor({...color, textColor: colors.white})}
             onHideUnderlay={() => setColor({...color, textColor: isSelected?colors.white:style.textColor})}
-            style={
-                {
-                    width: style.width ? style.width : null,
-                    ...styles.button,
-                    borderColor: style.borderColor,
-                    backgroundColor: color.backgroundColor,
-                    opacity: disabled ? 0.7 : 1,
-                }
-            }
+            style={buttonStyle}
             disabled={disabled}
         >
             <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                <Text style={
-                    {
-                        color: color.textColor,
-                        textAlign: 'center',
-                        fontSize: style.fontSize ? normalize(style.fontSize) : normalize(15),
-                        opacity: disabled ? 0.7 : 1
-                    }
-                }>
-                    {title}
-                </Text>
+                <TextView
+                  text={title}
+                  style={{opacity: disabled ? 0.7 : 1}}
+                  fontSize={style.fontSize ? style.fontSize : 15}
+                  color={color.textColor}
+                  textAlign={'center'}
+                />
             </View>
         </TouchableHighlight>
     );

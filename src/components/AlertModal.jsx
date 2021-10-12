@@ -1,7 +1,6 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react';
-import { View, Text, StyleSheet, Modal, TouchableOpacity, Dimensions } from 'react-native';
+import { View, StyleSheet, Modal, TouchableOpacity } from 'react-native';
 
-import { normalize } from "../utils";
 import colors from "../styles/colors";
 import TextView from "./TextView";
 import { useDimension } from "../hooks";
@@ -70,9 +69,19 @@ const AlertModal = forwardRef((props, ref) => {
           <View style={styles.container}>
               <View style={contentStyle}>
                   {info.action && (
-                    <Text style={styles.confirmText}>{info.title}</Text>
+                    <TextView
+                      text={info.title}
+                      style={styles.confirmText}
+                      fontSize={22}
+                      color={colors.black}
+                    />
                   )}
-                  <Text style={styles.dialogue}>{info.description}</Text>
+                  <TextView
+                    text={info.description}
+                    style={styles.dialogue}
+                    fontSize={18}
+                    color={colors.grey800}
+                  />
                   <View style={styles.buttonContainer}>
                       <TouchableOpacity
                         style={{ ...styles.confirm, backgroundColor: info.actionButtonColor }}
@@ -124,14 +133,10 @@ const styles = StyleSheet.create({
         paddingVertical: 5
     },
     confirmText: {
-        alignSelf: 'flex-start',
-        color: colors.black,
-        fontSize: normalize(22)
+        alignSelf: 'flex-start'
     },
     dialogue: {
         alignSelf: 'flex-start',
-        color: colors.grey800,
-        fontSize: normalize(18),
         paddingVertical: 10
     },
     content: {
