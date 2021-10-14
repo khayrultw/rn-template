@@ -7,11 +7,11 @@
  */
 
 import React from 'react';
-import MaskTextInput from "./src/components/MaskTextInput";
+import Navigation from "./navigation/Navigation";
 
 const App = () => {
   return (
-    <></>
+    <Navigation />
   );
 };
 
