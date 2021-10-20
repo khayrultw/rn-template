@@ -5,6 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import ROUTES from "./routes";
 
 import { Home, Splash } from "../screens";
+import DrawerNav from './Drawer';
 
 const Drawer = createDrawerNavigator();
 
@@ -12,7 +13,7 @@ const Navigation = () => {
 
   return (
     <NavigationContainer>
-      <Drawer.Navigator>
+      <Drawer.Navigator drawerContent={({ navigation }) => <DrawerNav navigation={navigation}/>}>
         <Drawer.Screen
           name={ROUTES.SPLASH}
           component={Splash}
