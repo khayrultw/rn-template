@@ -1,10 +1,5 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import colors from './colors';
-
-export const dimensions = {
-  fullHeight: Dimensions.get('window').height,
-  fullWidth: Dimensions.get('window').width,
-};
 
 const buttonStyle = {
   alignItems: 'center',
@@ -54,7 +49,7 @@ export default StyleSheet.create({
   ml10: { marginLeft: 10 },
   ml15: { marginLeft: 15 },
   ml20: { marginLeft: 20 },
-  mr5: {marginRight: 5},
+  mr5: { marginRight: 5 },
   mr10: {marginRight: 10},
   mr15: {marginRight: 15},
   mr20: {marginRight: 20},

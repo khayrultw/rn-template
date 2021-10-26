@@ -1,17 +1,13 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
+import { Provider} from "react-redux";
 import Navigation from "./navigation/Navigation";
+import store from "./redux/store";
 
 const App = () => {
   return (
-    <Navigation />
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
   );
 };
 

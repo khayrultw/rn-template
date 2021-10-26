@@ -1,12 +1,12 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import { SafeAreaView } from "react-native-safe-area-context";
-import ROUTES from "./routes";
-import COLORS from "../styles/colors";
-import { normalize } from "../utils";
+import { SafeAreaView, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import Icon from "react-native-vector-icons/dist/MaterialIcons";
 
-import { TextView } from "../components";
+import ROUTES from "../routes";
+import COLORS from "../../styles/colors";
+import { normalize } from "../../utils";
+
+import { TextView } from "../../components";
 
 
 
@@ -22,7 +22,6 @@ const Drawer = ({ navigation }) => {
 
   const IconButton = ({ title, icon, action, color }) => (
     <TouchableOpacity style={styles.iconButton} onPress={() => action && action()}>
-      <Icon style={styles.icon} name={icon || ''} size={normalize(20)} color={color}/>
       <TextView
         text={title}
         fontSize={14}

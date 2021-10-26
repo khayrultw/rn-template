@@ -5,7 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import ROUTES from "./routes";
 
 import { Home, Splash } from "../screens";
-import DrawerNav from './Drawer';
+import DrawerNav from './components/Drawer';
 
 const Drawer = createDrawerNavigator();
 

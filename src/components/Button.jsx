@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import {normalize} from '../utils';
-import Icon from "react-native-vector-icons/FontAwesome5";
+import Icon from "react-native-vector-icons/dist/FontAwesome5";
 import TextView from "./TextView";
 import colors from "../styles/colors";
 
