@@ -4,7 +4,7 @@ import TextView from "../../components/TextView";
 import { SafeAreaView } from "react-native";
 import { Button } from "../../components";
 import ROUTES from "../../navigation/routes";
-import { increment } from "../../redux/actions";
+import { decrement, increment } from "../../redux/actions/counterActions";
 
 const Splash = ({navigation}) => {
 
@@ -28,6 +28,11 @@ const Splash = ({navigation}) => {
       <Button
         title={"increment"}
         onPress={() => {dispatch(increment())}}
+      />
+
+      <Button
+        onPress={() => {dispatch(decrement())}}
+        title={"decrement"}
       />
     </SafeAreaView>
   )
