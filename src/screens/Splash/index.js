@@ -1,2 +1,2 @@
-import Splash from './Splash';
+import Splash from './Components/Splash';
 export default Splash;
